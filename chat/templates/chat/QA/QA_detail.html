@@ -1,0 +1,36 @@
+
+{% extends 'basic_app/base.html' %}
+{% block body_block %}
+<style>
+    #hit
+    {
+         font-size: 15px;
+    }
+
+</style>
+<div class ="container">
+    <br>
+    <div class ="card">
+        <div class ="card-body">
+            <div class ="row">
+                <div id="hit" class="col-md-4">
+                    <h1 >{{ QA.subject }}</h1>
+                    <p > {{ QA.text}}</p>
+                    <h3  >{{ QA.release_date }}</h3>
+                                  {% if not user.groups.all.0.name == "customer" %}
+
+                            <a href="{% url 'chat:edit_QA' QA.id %}" class="btn btn-warning">Edit QA</a>
+                            <a href="{% url 'chat:delete_QA' QA.id %}" class="btn btn-danger">Delete QA</a>
+                        {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

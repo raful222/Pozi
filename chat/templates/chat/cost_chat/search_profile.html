@@ -1,0 +1,67 @@
+
+{% extends 'basic_app/base.html' %}
+
+{% block body_block %}
+
+<div class="block" type="text">try to search some user</div>
+
+{% for user in users %}
+      {% if user.groups.all.0.name == "customer" %}
+      <h3>{{ user.username }}</h3>
+                      {% endif %}
+ <div class="columns is-mobile">
+
+    {%endfor%}
+  <div class="column is-offset-one-fifth">
+
+
+<div class="field has-addons">
+<form>
+  <div class="control">
+
+    <input class="input is-large" name="q" type="text" placeholder="Search users..." value="{{ request.GET.q }}">
+  </div>
+  <div class="control">
+  	<button type="submit" class=" btn btn-lg btn-info">Search</button><br><br>
+  </div>
+  </form>
+</div>
+
+
+</div>
+</div>
+<div class="column is-one-quarter">
+
+{% for user in users %}
+
+      {% if user.groups.all.0.name == "customer" %}
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+          {% if user.regiter_extra_model.image %}
+<img class="image" src="{{ user.regiter_extra_model.image.url }}" width="96x96">
+          {% else %}
+            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+          {% endif %}
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>{{ user.first_name }} <br>{{ user.last_name }}<br<@{{ user.username }}<br><br>
+               <a  class="btn btn-lg btn-primary" href="{% url 'accounts:profile' user.pk %}">Profile</a></strong>
+
+        </p>
+
+          {% endif %}
+
+      </div>
+    </div>
+  </article>
+</div>
+{% endfor %}
+
+
+</div>
+{% endblock %}

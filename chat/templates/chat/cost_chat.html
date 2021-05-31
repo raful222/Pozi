@@ -1,0 +1,70 @@
+{% extends 'basic_app/base.html' %}
+{% block body_block %}
+
+<style>
+
+        h1 {
+  unicode-range: hebrew;
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+
+    h2 {
+      display: block;
+      font-size: 1.5em;
+      margin-top: 0.83em;
+      margin-bottom: 0.83em;
+      margin-left: 0;
+      margin-right: 0;
+      font-weight: bold;
+}
+      .btn-btn-primary
+      {
+
+
+      }
+
+</style>
+
+<div class="container" dir="rtl">
+
+<!--  <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+                    {% if user.groups.all.0.name == "customer"  %}
+<h1 >The cost of consulting a senior psychologist is 50 NIS</h1>
+<a href="{% url 'chat:Expert_questions'%}" class="btn btn-lg btn-info">Psychological questionnaire</a>
+    {%if is_week%}
+            <a href="{% url 'chat:Inbox_cost'%}" id="chat" class="btn btn-lg btn-info">Chat</a>
+            <a href="{% url 'chat:usersearch_cost' %}" class="btn btn-lg btn-info">New message</a>
+
+    {% else %}
+<h1  >Before entering the consultation, please fill out the <questionnaire></questionnaire> </h1>
+<a href="{% url 'chat:Payment_all'%}" class="btn btn-lg btn-info">Payment</a><br>
+    {%endif%}
+         {%endif%}
+
+
+
+
+              {% if user.groups.all.0.name == "Doc" or user.groups.all.0.name == "student_Doc" %}
+            <a href="{% url 'chat:Inbox_cost'%}" class="btn btn-lg btn-info">Chat</a>
+            <a href="{% url 'chat:profilesearch' %}" class="btn btn-lg btn-info">Find a patient</a>
+                 {%endif%}
+
+
+<!--          </nav>-->
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}

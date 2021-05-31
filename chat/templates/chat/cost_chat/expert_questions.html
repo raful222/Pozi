@@ -1,0 +1,45 @@
+
+{% extends 'basic_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body_block %}
+<style>
+    #send
+    {
+    color: green;
+    back-ground: green;
+
+    }
+
+</style>
+<div class ="container">
+    <br>
+    <div class ="card">
+        <div class ="card-body">
+            <h2 class="text-centere"><u>Psychological questionnaire </u></h2>
+            <form  action="" method="POST">
+                <h3>Have you recently experienced stress in the workplace / studies / home?</h3>
+                {{ form.Corona_feeling}}
+                <h3>Does your anxiety interfere with your two-day smile?</h3>
+                 {{ form.if_psychologist}}
+                <h3>Tell us about yourself</h3>
+                 {{ form.about_yourself}}
+                <h3>How do you feeling</h3>
+                 {{ form.feel}}
+                <br>
+                <br>
+
+                  {% csrf_token %}
+                <button type="submit" id='send' name="action" class="button is-info">Send</button>
+                      {% if error %}
+                <i style="color:red;">{{error}}</i>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,29 @@
+
+{% extends 'basic_app/base.html' %}
+{% block body_block %}
+<div class ="container">
+    <br>
+    <div class ="card">
+        <div class ="card-body">
+            <div class ="row">
+                <div class="col-md-4">
+                    <h1>{{ Daliy_Tips.subject }}</h1>
+                    <p> {{ Daliy_Tips.text}}</p>
+                    <h3>{{ Daliy_Tips.release_date }}</h3>
+                                                   {% if not user.groups.all.0.name == "customer" %}
+
+                            <a href="{% url 'chat:edit_tip' Daliy_Tips.id %}" class="btn btn-warning">Edit Tip</a>
+                            <a href="{% url 'chat:delete_tip' Daliy_Tips.id %}" class="btn btn-danger">Delete Tip</a>
+                        {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

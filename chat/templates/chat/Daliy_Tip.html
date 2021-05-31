@@ -1,0 +1,30 @@
+
+{% extends 'basic_app/base.html' %}
+{% block body_block %}
+
+<h1>  טיפים  </h1>
+
+{% for message in messages %}
+                <h3><i id="message" style="background-color:red">{{message}}</i></h3>
+                {% endfor %}
+{% for tip in Daliy_Tips %}
+
+      <div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <a href = '/chat/Daliy_Tip/tip_detail/{{ tip.id }}'><div class="caption">
+          <h3> {{ tip.subject }} </h3>
+          <h4>{{ tip.release_date }}</h4>
+
+      </div></a>
+    </div>
+  </div>
+    </div>
+        {% endfor %}
+              {% if not user.groups.all.0.name == "customer" %}
+
+        <a href="{% url 'chat:Daliy_Tip_add'%}" class="btn btn-primary">add Tip</a>
+    {% endif %}
+
+
+{% endblock %}
