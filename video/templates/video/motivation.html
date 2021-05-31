@@ -1,0 +1,39 @@
+{% extends 'basic_app/base.html' %}
+{% load embed_video_tags %}
+{% block body_block %}
+<style>
+     h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 50px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+        .card-text
+        {
+       margin: 20px 0;
+        }
+
+
+</style>
+<h1>Enjoy with some Motivation videos: </h1>
+{% if not user.groups.all.0.name == "customer" %}
+        <a href="{% url 'video:add_motivation_video'%}" class="btn btn-warning">Add Video</a><br>
+
+{% endif %}
+
+<div class="container">
+<div class="row">
+
+ {% for i in obj %}
+                                            <div class="col-md-5 col-md-offset-1">
+
+                      <p class="card-text">
+
+                             {% if not user.groups.all.0.name == "customer" %}
+      <a href = '/video/motivation/motivation_detail/{{ i.id }}'>
+                      <h3>Edit </h3>
+                      {% endif %}
+                      {% video i.video 'tiny' %}
+                      </p>
+                  </div>
+
+{% endfor %}
+ </div>
+</div>
+{% endblock %}
+

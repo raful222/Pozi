@@ -1,0 +1,29 @@
+
+{% extends 'basic_app/base.html' %}
+{% load embed_video_tags %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+<style>
+   #hit
+    {
+         font-size: 15px;
+    }
+</style>
+<h1>Add video </h1>
+
+<div class ="container">
+    <br>
+    <div class ="card">
+        <div class ="card-body">
+            <form  id="hit"  action="" method="POST">
+                {{ form | crispy }}
+                  {% csrf_token %}
+                <button class="btn btn-lg btn-success"  type="submit">Add video</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+

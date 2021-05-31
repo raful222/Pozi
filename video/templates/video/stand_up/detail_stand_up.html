@@ -1,0 +1,27 @@
+
+{% extends 'basic_app/base.html' %}
+{% load embed_video_tags %}
+
+{% block body_block %}
+<div class ="container">
+    <br>
+    <div class ="card">
+        <div class ="card-body">
+            <div class ="row">
+                <div class="col-md-4">
+                    <a href="{% url 'video:edit_stand_up' stand_up_video.id %}" class="btn btn-warning">Edit video</a>
+                    <a href="{% url 'video:delete_stand_up' stand_up_video.id %}" class="btn btn-danger">Delete video</a>
+
+                    {% video stand_up_video.video 'large' %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}
