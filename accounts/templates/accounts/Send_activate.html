@@ -1,0 +1,6 @@
+{% extends 'basic_app/base.html' %}
+{% block body_block %}
+
+<h1>We have sent you a verification email, please verify it using the link sent!</h1>
+<li><a class="btn btn-lg btn-success" href="{% url 'accounts:login' %}">Login</a></li>
+{% endblock %}

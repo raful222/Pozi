@@ -1,0 +1,21 @@
+
+{% extends 'basic_app/base.html' %}
+{% block body_block %}
+
+<style>
+    #hit
+    {
+         font-size: 15px;
+    }
+
+
+</style>
+<h3>Enter a new email to be your email address</h3>
+<form id="hit" method="post">
+  {% csrf_token %}
+    {{ form.email.label }}
+  {{ form.email }}
+  <button class="btn btn-lg btn-success" type="submit">Save changes</button>
+</form>
+
+{% endblock %}

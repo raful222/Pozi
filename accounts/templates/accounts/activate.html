@@ -1,0 +1,6 @@
+{% extends 'basic_app/base.html' %}
+{% block body_block %}
+
+<h1>Thank you for your email confirmation. Now you can login your account !</h1>
+<li><a class="btn btn-lg btn-success" href="{% url 'accounts:login' %}">Login</a></li>
+{% endblock %}

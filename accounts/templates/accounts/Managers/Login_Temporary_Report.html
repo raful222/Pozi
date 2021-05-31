@@ -1,0 +1,94 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Title</title>
+        <style type="text/css">
+            body {
+                font-weight: 200;
+                font-size: 14px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+            table, th, td {
+                    border: 2px solid black;
+                    }
+        </style>
+    </head>
+    <body>
+    {% block content%}
+
+        <div class='wrapper'>
+            <div class='header'>
+                <p class='title'> <u>Users' report registered Monthly:</u>  </p>
+
+            </div>
+        <div>
+            <div class='details'>
+
+            </head>
+            <body>
+
+
+            <table style="width:100%">
+                  <tr>
+                    <th>Firstname:</th>
+                    <th>Lastname:</th>
+                    <th>Date:</th>
+                  </tr>
+                  <tr>
+                      {% for User in user %}
+                      {% if User.date_joined.month == month %}
+                    <td>{{User.username}}</td>
+                    <td>{{User.last_name}}</td>
+                    <td>{{ User.date_joined.month}}</td>
+                  </tr>
+                        {% endif %}
+                        {%endfor%}
+                </table>
+
+
+
+            </div>
+        </div>
+            {% endblock content %}
+
+        </body>
+    </html>
+
+
+
+
+
+
+
+
+
+
+

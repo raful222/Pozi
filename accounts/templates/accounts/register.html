@@ -1,0 +1,42 @@
+{% extends 'basic_app/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block body_block %}
+<style>
+    #hit
+    {
+         font-size: 20px;
+    }
+</style>
+
+<div class ="container">
+    <div class="card">
+        <div class =card-body>
+          <h1 class =text-center>Register an Account</h1>
+            <form id="hit" action="" method ="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | crispy }}
+                {{ form1 | crispy }}
+
+                 <div class="jumbotron" >
+        <p >
+                    Welcome to the POZI website The use of the website is subject to the conditions listed below.
+Privacy Policy: Your private information will be used to maximize personal care and use of the Site. Your details will not be passed to a third party.</p>
+        <h3>
+             Confirm <input type="checkbox" name=""  value="" required>
+
+        </h3>
+
+    </div>
+<ul class="nav navbar-nav">
+</ul>
+                <input id="hit" type="submit" value="Register" class="btn btn-success btn-primary">
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

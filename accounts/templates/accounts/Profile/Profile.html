@@ -1,0 +1,89 @@
+
+{% extends 'basic_app/base.html' %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+<style>
+    #imgID{
+    border-radius: 50%;
+    }
+
+   #hit
+    {
+         font-size: 13px;
+    }
+</style>
+    {%if user.username == user1.username %}
+
+<h1 class="divider"> Profile</h1><br>
+    <a id="hit" class="btn btn-info" href="{% url 'accounts:Video_repository' %}">Videos</a>
+    <a id="hit" class="btn btn-info" href="{% url 'accounts:change_password' %}">Change Password</a>
+   <a id="hit" class="btn btn-info" href="{% url 'accounts:change_email' %}">Change Email</a>
+   {%endif%}
+<br><br>
+<br>
+
+
+
+<div class="row">
+    <div class="col-md-3">
+             <img class="image" id='imgID' src="{{ user1.regiter_extra_model.image.url }}" width="240">
+
+    </div>
+    <br>
+<div class="col-ml-6">
+    <br><br><br><br><br>
+
+     <div class="card card-body">
+
+         <h3>User Name: {{ user1.username }}</h3>
+<h3>Email Address: {{ user1.email }}</h3>
+<h3>First Name: {{ user1.first_name }}</h3>
+<h3>Last Name: {{ user1.last_name }}</h3>
+<h3>Birthday Date: {{ user1.regiter_extra_model.date }}</h3>
+<h3>Gender: {{ user1.regiter_extra_model.Gender }}</h3>
+     </div>
+</div>
+</div>
+
+
+<form method="POST" action="" enctype="multipart/form-data">
+{% csrf_token %}
+    <style>
+        .test{
+            visibility: hidden;
+        }
+    </style>
+
+    <div class="test" >
+    {{ form.date.label }}:
+      {{ form.date}}
+    {{ form.Gender.label }}:
+      {{ form.Gender}}</div>
+    {%if user.username == user1.username %}
+    <h3>Change your profile picture</h3>
+    <h4>{{ form.image}}</h4>
+
+
+      <button id="hit" class="btn btn-success" type="submit">Save </button>
+    </form>
+   {%endif%}
+
+
+
+
+
+              {% if not user.groups.all.0.name == "customer" %}
+{%for i in aa%}
+<h3>Date : {{i.published_date}}</h3>
+<h4>Have you recently experienced stress in the workplace / studies / home? :{{i.Corona_feeling}}</h4>
+<h4> Does your anxiety interfere with your two-day smile? :{{i.if_psychologist}}</h4>
+<h4> Tell us about yourself :{{i.about_yourself}}</h4>
+<h4>How do you feeling :{{i.feel}}</h4>
+<br>
+
+{%endfor%}
+
+   {%endif%}
+
+
+{% endblock %}
