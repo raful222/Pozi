@@ -1,0 +1,31 @@
+
+{% extends 'basic_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body_block %}
+<style>
+    #hit
+    {
+         font-size: 25px;
+    }
+
+</style>
+<div class ="container">
+    <br>
+    <div class ="card">
+        <div class ="card-body">
+            <div class ="row">
+                <div class="col-md-6">
+    <h1> Here you can write the review </h1>
+    <form id="hit" method="POST">
+      {{ form | crispy }}
+      {% csrf_token %}
+
+      <button class="btn btn-lg btn-success" type="submit">Save chanssges</button>
+</form>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

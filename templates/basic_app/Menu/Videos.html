@@ -1,0 +1,19 @@
+
+{% extends 'basic_app/base.html' %}
+{% block body_block %}
+<div class ="container">
+    <div class ="card">
+        <div class ="card-body">
+            <div class ="row">
+                <div class="col-md-6">
+                  <h1> Videos</h1>
+                    <li><a class='navbar-link' href="{% url 'video:Sport' %}"> Sport</a></li>
+                    <li><a class="navbar-link" href="{% url 'video:stand_up_comedy' %}">Stand up</a></li>
+                    <li><a class="navbar-link" href="{% url 'video:motivation' %}">Motivation</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

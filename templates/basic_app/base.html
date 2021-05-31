@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<link>
+    <meta charset="utf-8" style="background-color:#6b5b95">
+    <title>Base</title>
+    <!-- Latest compiled and minified CSS -->
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+ <body>
+
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
+
+            body{
+    background-color: rgb(120, 120, 120);
+  }
+
+             .button
+             {
+                font-size: 15px;
+                 font-family: 'Hachi Maru Pop', cursive;
+
+             }
+
+            .dropdown-toggle
+            {
+               font-size: 15px;
+            }
+
+            .navbar-link
+            {
+              font-size: 15px;
+              #font-family: "Times New Roman", Times, serif;
+            }
+            .navbar-link-nav
+            {
+                font-size:15px;
+            }
+
+            .form-control
+            {
+            font-size: 15px;
+            }
+
+            #sumbit
+            {
+                font-size: 13px;
+            }
+
+            #pozi{
+                  width: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+            }
+
+        </style>
+
+
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+                   <img src="https://i.ibb.co/z5G3GQG/pozilogo2.png" id="pozi" alt="pozilogo2" border="0"></a>
+      <div class="container">
+
+
+        <ul class="nav navbar-nav">
+
+          <li><a href="{% url 'index' %}" class="btn btn-primary btn-lg" role="button">Home</a></li>
+
+
+
+          {% if user.is_authenticated %}
+            <li><a class='navbar-link-nav'  href="{% url 'accounts:logout' %}">Logout</a></li>
+             {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                            <li><a class="navbar-link-nav" id="check1" href="{% url 'admin:index' %}">Admin</a></li>
+
+                        {% endif %}
+             {% endif %}
+
+
+
+
+
+             <a class=dropdown-menu" ></a></ul>
+
+<ul class="nav navbar-nav">
+  <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle"  data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      Menu
+    </a>
+    <ul class="dropdown-menu">
+        <li><a class="button" href="{% url 'basic_app:consultation'  %}">Consulting</a></li>
+        <li><a  class="button" href="{% url 'basic_app:stories' %}"> Personal Stories</a></li>
+        <li><a  class="button" href="{% url 'basic_app:Videos' %}">Videos</a></li>
+    </ul>
+  </li>
+</ul>
+<ul class="nav navbar-nav">
+  <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      Options
+    </a>
+    <ul class="dropdown-menu">
+      <li><a  class="button"   href="{% url 'accounts:profile' user.pk %}">Private profile</a></li>
+        <li><a  class="button"  href="{% url 'basic_app:Review' %}">Leave a review</a></li>
+        <li><a  class="button"  href="{% url 'basic_app:about' %}">About </a></li>
+    </ul>
+  </li>
+       {% if request.user.is_staff %}
+    <ul class="nav navbar-nav">
+  <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      Reports for Admins
+    </a>
+    <ul class="dropdown-menu">
+        <li><a  class="button" href="{% url 'accounts:test-view' %}">Report entry times</a></li>
+        <li><a  class="button" href="{% url 'accounts:test-view2' %}">Report content consumption</a></li>
+        <li><a  class="button" href="{% url 'accounts:test-view3' %}">Report payments</a></li>
+    </ul>
+  </li>
+
+        {% endif %}
+
+          <form class="navbar-form navbar-left" method="GET" action="{% url 'basic_app:index' %}">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name ="title">
+        </div>
+        <button type="submit" id="sumbit" class="btn btn-info">Submit</button>
+      </form>
+
+          {% else %}
+            <li><a class="btn btn-link btn-lg" href="{% url 'accounts:login' %}" role="button">Login </a></li>
+            <li><a class="btn btn-link btn-lg" href="{% url 'accounts:register' %}" role="button">Register</a></li>
+          {% endif %}
+
+
+
+
+      </div>
+
+
+    </nav>
+    <div class="container">
+    {% block body_block %}
+    {% endblock %}
+    </div>
+
+
+
+  </body>
+

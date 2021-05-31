@@ -1,0 +1,75 @@
+{% extends "basic_app/base.html" %}
+{% block body_block %}
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+  #moving
+  {
+    color:black;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 20px;
+
+  }
+  #ee
+  {
+      text-align: center;
+  }
+   #ee1
+  {
+      text-align: center;
+      font-size: 45px;
+  }
+
+  .advertheading
+  {
+  text-align: center;
+  }
+
+</style>
+  <div id="ee1">Welcome to POZI</div>
+    {% if user.is_authenticated %}
+
+<section class="notice" id="moving" data-container="body" data-toggle="tooltip" data-placement="bottom" data-original-title="test"><marquee><span class="notice"> {{ popup }} </span></marquee></div></section>
+
+{% for message in messages %}
+
+                <h3><i id="message" style="background-color:red">{{message}}</i></h3>
+                {% endfor %}
+
+
+
+<div class="container"  dir="rtl">
+  <div class="jumbotron" dir="rtl">
+    <h1 class = "advertheading" > Personal stories of users</h1>
+  </div>
+<!--        <h2>Hello {{ user.username }}</h2>-->
+
+      {% for storie in stories %}
+
+      <div class="row" dir="rtl">
+  <div class="col-sm-6 col-md-12" dir="rtl">
+
+
+    <div class="thumbnail" >
+      <a  href = '/stories/detail/{{ storie.id }}'><div class="caption" >
+        <h2 id="ee">  <strong> <ins>{{ storie.subject }}</ins> </strong></h2>
+        <h3 id="ee"> {{ storie.text }} </h3>
+      </div>
+      </a>
+  </div>
+  </div>
+      </div>
+
+
+
+      {% endfor %}
+
+
+
+    {% else %}
+
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+

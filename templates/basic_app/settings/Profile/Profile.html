@@ -1,0 +1,41 @@
+
+{% extends 'basic_app/base.html' %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+
+
+<img class="image" src="{{ request.user.regiter_extra_model.image.url }}" width="320">
+
+<h3>User Name: {{ user1.username }}</h3>
+<h3>Email Address: {{ user1.email }}</h3>
+<h3>First Name: {{ user1.first_name }}</h3>
+<h3>Last Name: {{ user1.last_name }}</h3>
+
+
+
+<form method="POST" action="" enctype="multipart/form-data">
+{% csrf_token %}
+    {{ form.date.label }}:
+      {{ form.date}}
+    {{ form.Gender.label }}:
+      {{ form.Gender}}
+    {{ form.image.label }}:
+      {{ form.image}}
+
+<input class="btn btn-primary" type="submit" name="Update Information">
+    </form>
+
+
+<h1> פרופיל אישי</h1>
+    <li><a  class="nav-link" href="{% url 'basic_app:Video_repository' %}">מאגר סרטונים</a></li>
+    <li><a class="nav-link" href="{% url 'basic_app:change_password' %}">שינוי סיסמה</a></li>
+    <li><a class="nav-link" href="{% url 'accounts:change_email' %}">שינוי מייל</a></li>
+
+
+
+
+
+
+
+
+{% endblock %}

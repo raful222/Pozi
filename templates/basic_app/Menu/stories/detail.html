@@ -1,0 +1,46 @@
+
+{% extends 'basic_app/base.html' %}
+{% block body_block %}
+
+<style>
+    #hit
+    {
+         font-size: 15px;
+         text-align: center;
+    }
+    #hit1
+    {
+         font-size: px;
+         text-align: center;
+
+    }
+
+</style>
+
+
+
+
+
+<
+      <div class="row" dir="rtl">
+  <div class="col-sm-6 col-md-12" dir="rtl">
+
+
+    <div class="thumbnail" >
+                    <h1 id="hit">{{ story.subject }}</h1>
+                    <p id="hit"> {{ story.text}}</p>
+                    {% if not user.groups.all.0.name == "customer" %}
+
+                             <a href="{% url 'basic_app:edit_story' story.id %}" class="btn btn-warning">Edit Story</a>
+                             <a href="{% url 'basic_app:delete_story' story.id %}" class="btn btn-danger">Delete Story</a>
+                    {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+
+{% extends 'basic_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body_block %}
+
+
+<style>
+    #hit
+    {
+         font-size: 25px;
+    }
+    #hit1
+    {
+         font-size: 15px;
+    }
+
+</style>
+<div class ="container">
+    <br>
+    <div class ="card">
+        <div class ="card-body">
+            <div class ="row">
+                <div class="col-md-6">
+    <h1 id="hit"> Here you can share your personal story </h1>
+    <form id="hit1" method="POST">
+      {{ form | crispy }}
+      {% csrf_token %}
+
+      <button id="hit1" class="btn btn-success" type="submit">Save chanssges</button>
+</form>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
